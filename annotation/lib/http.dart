@@ -20,7 +20,9 @@ enum Parser {
 
   /// Each model class must add annotation '@jsonSerializable'
   /// For more detail, please visit 'https://github.com/k-paxian/dart-json-mapper'
-  DartJsonMapper
+  DartJsonMapper,
+
+  JsonConvert
 }
 
 /// Define an API.

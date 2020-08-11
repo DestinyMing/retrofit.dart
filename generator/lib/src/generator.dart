@@ -422,6 +422,10 @@ class RetrofitGenerator extends GeneratorForAnnotation<retrofit.RestApi> {
               blocks.add(Code(
                   "var value = $_resultVar.data.map((dynamic i) => $innerReturnType.fromJson(i as Map<String,dynamic>)).toList();"));
               break;
+            case retrofit.Parser.JsonConvert:
+              blocks.add(Code(
+                  "var value = $_resultVar.data.map((dynamic i) => BaseEntity<$innerReturnType>.fromJson(i as Map<String,dynamic>)).toList();"));
+              break;
             case retrofit.Parser.DartJsonMapper:
               blocks.add(Code(
                   "var value = $_resultVar.data.map((dynamic i) => JsonMapper.deserialize<$innerReturnType>(i as Map<String,dynamic>)).toList();"));
@@ -521,6 +525,10 @@ class RetrofitGenerator extends GeneratorForAnnotation<retrofit.RestApi> {
             case retrofit.Parser.JsonSerializable:
               blocks.add(Code(
                   "final value = $returnType.fromJson($_resultVar.data);"));
+              break;
+            case retrofit.Parser.JsonConvert:
+              blocks.add(Code(
+                  "final value = BaseEntity<$returnType>.fromJson($_resultVar.data);"));
               break;
             case retrofit.Parser.DartJsonMapper:
               blocks.add(Code(
